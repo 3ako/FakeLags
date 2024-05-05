@@ -8,6 +8,7 @@ public final class FakeLags extends JavaPlugin {
 
     private TrollingPacketListener packetListener;
     private TrollingManager trollingManager = new TrollingManager();
+
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(trollingManager, this);

@@ -1,4 +1,4 @@
-package hw.zako.fakelags;
+package hw.zako.fakelags.trolling;
 
 public enum TrollingType {
     ALL, // cancelling packets from client

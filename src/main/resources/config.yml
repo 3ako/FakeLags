@@ -1,0 +1,8 @@
+messages:
+  enable_lag: "У игрока %player% были включены лаги %type%."
+  disable_lag: "У игрока %player% были выключены лаги %type%."
+  not_found_type: "Переданный тип лагов не найден."
+  not_found_player: "Игрок не найден."
+
+packets_cancel_chance: 65 # need to "All" type lags
+permissions_to_enable_lag: enable.lag

@@ -9,12 +9,12 @@ import hw.zako.fakelags.trolling.AbstractTrolling;
 public final class AllTrolling extends AbstractTrolling {
 
     public AllTrolling() {
-        super(TrollingType.ALL);
+        super(TrollingType.ALL_CANCEL);
     }
 
     @Override
     public void packetReceive(PacketReceiveEvent e) {
-        if (Math.random() > FakeLags.getConfiguration().getAllPacketCancelChance() / 100.0) {
+        if (Math.random() < FakeLags.getConfiguration().getAllPacketCancelChance() / 100.0) {
             e.setCancelled(true);
         }
     }

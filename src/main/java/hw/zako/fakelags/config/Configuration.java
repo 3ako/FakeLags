@@ -20,6 +20,8 @@ public final class Configuration {
 
     private String notFoundPlayer;
 
+    private String noPermissions;
+
     private final int allPacketCancelChance;
 
     public Configuration(FileConfiguration fileConfiguration) {
@@ -27,10 +29,11 @@ public final class Configuration {
         final String permissionsEnableLag = fileConfiguration.getString("permissions_to_enable_lag");
 
         if (messages != null) {
-            this.disableMessage = fileConfiguration.getString("messages.disable_lag");
-            this.enableMessage = fileConfiguration.getString("messages.enable_lag");
-            this.notFoundType = fileConfiguration.getString("messages.not_found_type");
-            this.notFoundPlayer = fileConfiguration.getString("messages.not_found_player");
+            this.disableMessage = messages.getString("disable_lag");
+            this.enableMessage = messages.getString("enable_lag");
+            this.notFoundType = messages.getString("not_found_type");
+            this.notFoundPlayer = messages.getString("not_found_player");
+            this.noPermissions = messages.getString("no_permissions");
         }
 
         if (permissionsEnableLag != null) {

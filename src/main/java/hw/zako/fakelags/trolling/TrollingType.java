@@ -1,7 +1,7 @@
-package hw.zako.fakelags;
+package hw.zako.fakelags.trolling;
 
 public enum TrollingType {
-    ALL, // cancelling packets from client
+    ALL_CANCEL, // cancelling packets from client
     ENTITIES_NO_MOVE, // freezing all entities for client
     SPAM_SOUNDS, // spam random sounds
     FANTOM_BLOCKS, // spawns barriers next to the player

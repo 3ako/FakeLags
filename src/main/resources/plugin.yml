@@ -2,9 +2,9 @@ name: FakeLags
 version: '${version}'
 main: hw.zako.fakelags.FakeLags
 api-version: '1.16'
+
 commands:
-  cheaterenablelags:
-    permission: trolling.admin
-    usage: /cheaterenablelags [player]
+  lags:
+    usage: /lasg <type> <player>
 depend:
   - packetevents

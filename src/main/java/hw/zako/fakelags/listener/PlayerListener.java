@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public final class PlayerListener implements Listener {
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e) {
+    private void onQuit(PlayerQuitEvent e) {
         FakeLags.getTrollingManager().getTrollings().remove(e.getPlayer());
     }
 

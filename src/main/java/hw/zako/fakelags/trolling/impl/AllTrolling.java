@@ -20,8 +20,6 @@ public final class AllTrolling extends AbstractTrolling {
     }
 
     @Override
-    public void packetSend(PacketSendEvent e) {
-
-    }
+    public void packetSend(PacketSendEvent e) {}
 
 }

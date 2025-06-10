@@ -13,9 +13,7 @@ public final class FreezeTrolling extends AbstractTrolling {
     }
 
     @Override
-    public void packetReceive(PacketReceiveEvent e) {
-
-    }
+    public void packetReceive(PacketReceiveEvent e) {}
 
     @Override
     public void packetSend(PacketSendEvent e) {

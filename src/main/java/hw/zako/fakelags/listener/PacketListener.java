@@ -15,38 +15,35 @@ public final class PacketListener extends PacketListenerAbstract {
 
     @Override
     public void onPacketReceive(PacketReceiveEvent e) {
-        if (!eventCheck(e, ConnectionState.PLAY))
-            return;
+        if (eventCheck(e)) return;
 
         final Player player = (Player) e.getPlayer();
-        final HashSet<AbstractTrolling> playerTrollings = FakeLags.getTrollingManager().getTrollings().get(player);
+        final HashSet<AbstractTrolling> playerTrolling = FakeLags.getTrollingManager().getTrollings().get(player);
 
-        if (playerTrollings != null) {
-            for (AbstractTrolling trolling : playerTrollings)
-                trolling.packetReceive(e);
+        if (playerTrolling != null) {
+            for (AbstractTrolling trolling : playerTrolling) trolling.packetReceive(e);
         }
     }
 
     @Override
     public void onPacketSend(PacketSendEvent e) {
-        if (!eventCheck(e, ConnectionState.PLAY))
-            return;
+        if (eventCheck(e)) return;
 
         final Player player = (Player) e.getPlayer();
-        final HashSet<AbstractTrolling> playerTrollings = FakeLags.getTrollingManager().getTrollings().get(player);
+        final HashSet<AbstractTrolling> playerTrolling = FakeLags.getTrollingManager().getTrollings().get(player);
 
-        if (playerTrollings != null) {
-            for (AbstractTrolling trolling : playerTrollings)
+        if (playerTrolling != null) {
+            for (AbstractTrolling trolling : playerTrolling)
                 trolling.packetSend(e);
         }
     }
 
-    private boolean eventCheck(ProtocolPacketEvent<Object> event, ConnectionState state) {
-        if (event.getConnectionState() != state) {
-            return false;
+    private boolean eventCheck(ProtocolPacketEvent<Object> event) {
+        if (event.getConnectionState() != ConnectionState.PLAY) {
+            return true;
         }
 
-        return event.getPlayer() != null;
+        return event.getPlayer() == null;
     }
 
 }

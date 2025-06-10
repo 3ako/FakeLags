@@ -30,7 +30,7 @@ public final class BlocksTrolling extends AbstractTrolling {
             final Location playerLocation = ((Player) e.getPlayer()).getLocation();
             final int radius = 3;
 
-            for (Block block : getNearbyBlocks(playerLocation, radius)) {
+            for (Block block : getNearbyBlocks(playerLocation)) {
                 if (block.getType() == Material.AIR &&
                         playerLocation.distance(block.getLocation()) >= radius - 1) {
                     e.getUser().sendPacket(new WrapperPlayServerBlockChange(
@@ -43,15 +43,13 @@ public final class BlocksTrolling extends AbstractTrolling {
     }
 
     @Override
-    public void packetSend(PacketSendEvent e) {
+    public void packetSend(PacketSendEvent e) {}
 
-    }
-
-    private List<Block> getNearbyBlocks(Location location, int radius) {
-        final List<Block> blocks = new ArrayList<Block>();
-        for(int x = location.getBlockX() - radius; x <= location.getBlockX() + radius; x++) {
-            for(int y = location.getBlockY() - radius; y <= location.getBlockY() + radius; y++) {
-                for(int z = location.getBlockZ() - radius; z <= location.getBlockZ() + radius; z++) {
+    private List<Block> getNearbyBlocks(Location location) {
+        final List<Block> blocks = new ArrayList<>();
+        for(int x = location.getBlockX() - 3; x <= location.getBlockX() + 3; x++) {
+            for(int y = location.getBlockY() - 3; y <= location.getBlockY() + 3; y++) {
+                for(int z = location.getBlockZ() - 3; z <= location.getBlockZ() + 3; z++) {
                     blocks.add(location.getWorld().getBlockAt(x, y, z));
                 }
             }

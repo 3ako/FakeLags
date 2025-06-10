@@ -8,6 +8,7 @@ import hw.zako.fakelags.trolling.TrollingType;
 import hw.zako.fakelags.trolling.AbstractTrolling;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public final class ItemsTrolling extends AbstractTrolling {
 
@@ -18,8 +19,7 @@ public final class ItemsTrolling extends AbstractTrolling {
     @Override
     public void packetReceive(PacketReceiveEvent e) {
         final User user = e.getUser();
-        final Random random = new Random();
-        final WrapperPlayServerHeldItemChange packet = new WrapperPlayServerHeldItemChange(random.nextInt(9));
+        final WrapperPlayServerHeldItemChange packet = new WrapperPlayServerHeldItemChange(ThreadLocalRandom.current().nextInt(9));
         user.sendPacket(packet);
     }
 

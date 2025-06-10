@@ -5,6 +5,6 @@ api-version: '1.16'
 
 commands:
   lags:
-    usage: /lasg <type> <player>
+    usage: /lags <type> <player>
 depend:
   - packetevents

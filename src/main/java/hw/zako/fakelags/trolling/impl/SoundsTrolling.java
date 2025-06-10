@@ -13,6 +13,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public final class SoundsTrolling extends AbstractTrolling {
 
@@ -21,12 +22,10 @@ public final class SoundsTrolling extends AbstractTrolling {
     }
 
     @Override
-    public void packetReceive(PacketReceiveEvent e) {
-        final User user = e.getUser();
-        final Random random = new Random();
-        final Location playerLocation = ((Player) e.getPlayer()).getLocation();
-        final WrapperPlayServerSoundEffect packet = new WrapperPlayServerSoundEffect(Sound.values()[random.nextInt(Sound.values().length)].ordinal(), SoundCategory.values()[random.nextInt(SoundCategory.values().length)], new Vector3i(playerLocation.getBlockX(), playerLocation.getBlockY(), playerLocation.getBlockZ()), 100, 100);
-        user.sendPacket(packet);
+    public void packetReceive(PacketReceiveEvent event) {
+        final Player player = (Player) event.getPlayer();
+
+        player.playSound(player.getLocation(), Sound.values()[ThreadLocalRandom.current().nextInt(Sound.values().length)], 100, 100);
     }
 
     @Override

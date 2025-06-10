@@ -1,7 +1,6 @@
 package hw.zako.fakelags.command;
 
 import hw.zako.fakelags.FakeLags;
-import hw.zako.fakelags.config.Configuration;
 import hw.zako.fakelags.trolling.TrollingType;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

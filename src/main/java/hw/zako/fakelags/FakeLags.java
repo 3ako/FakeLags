@@ -2,7 +2,6 @@ package hw.zako.fakelags;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import hw.zako.fakelags.command.LagsCommand;
-import hw.zako.fakelags.config.Configuration;
 import hw.zako.fakelags.listener.PacketListener;
 import hw.zako.fakelags.listener.PlayerListener;
 import hw.zako.fakelags.manager.TrollingManager;
@@ -11,7 +10,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class FakeLags extends JavaPlugin {
-
     @Getter
     private static TrollingManager trollingManager;
 
@@ -19,20 +17,20 @@ public final class FakeLags extends JavaPlugin {
     private static PacketListener packetListener;
 
     @Getter
-    private static Configuration configuration;
+    private static Config configuration;
 
     @Override
     public void onEnable() {
-        this.saveDefaultConfig();
+        super.saveDefaultConfig();
 
         trollingManager = new TrollingManager();
         packetListener = new PacketListener();
-        configuration = new Configuration(this.getConfig());
+        configuration = new Config(super.getConfig());
 
         PacketEvents.getAPI().getEventManager().registerListener(packetListener);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
 
-        getCommand("lags").setExecutor(new LagsCommand());
+        super.getCommand("lags").setExecutor(new LagsCommand());
     }
 
     @Override

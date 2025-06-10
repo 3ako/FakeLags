@@ -5,8 +5,8 @@ import com.github.retrooper.packetevents.event.PacketSendEvent;
 
 public interface ITrolling {
 
-    void packetReceive(PacketReceiveEvent e);
+    void packetReceive(PacketReceiveEvent event);
 
-    void packetSend(PacketSendEvent e);
+    void packetSend(PacketSendEvent event);
 
 }

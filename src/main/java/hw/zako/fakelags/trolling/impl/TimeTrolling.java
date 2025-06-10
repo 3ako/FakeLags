@@ -9,6 +9,7 @@ import hw.zako.fakelags.trolling.AbstractTrolling;
 import org.bukkit.entity.Player;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public final class TimeTrolling extends AbstractTrolling {
 
@@ -17,15 +18,13 @@ public final class TimeTrolling extends AbstractTrolling {
     }
 
     @Override
-    public void packetReceive(PacketReceiveEvent e) {
-
-    }
+    public void packetReceive(PacketReceiveEvent e) {}
 
     @Override
-    public void packetSend(PacketSendEvent e) {
-        final User user = e.getUser();
-        final Random random = new Random();
-        final WrapperPlayServerTimeUpdate packet = new WrapperPlayServerTimeUpdate(0, random.nextInt((int) ((Player) e.getPlayer()).getWorld().getFullTime()));
+    public void packetSend(PacketSendEvent event) {
+        final User user = event.getUser();
+
+        final WrapperPlayServerTimeUpdate packet = new WrapperPlayServerTimeUpdate(0, ThreadLocalRandom.current().nextInt((int) ((Player) event.getPlayer()).getWorld().getFullTime()));
         user.sendPacket(packet);
     }
 
